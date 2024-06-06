@@ -159,12 +159,16 @@ app.get('/', (req,res) => {
 
 14. Open Postman and test routes
 
-Create Workspace- MERN Auth
-Create collection - User
-Inside User - create a new route 
+Create Workspace- MERN Auth  
+
+Create collection - User  
+
 in environment - put this http://localhost:8000/api as baseUrl
+
+Inside User - create a new route : {{baseUrl}}/users/auth 
+
 now hit a POST request 
-{{baseUrl}}/users/auth 
+
 it will show response 
 {
     "message": "Auth user"
