@@ -20,8 +20,12 @@ mkdir backend
 5. Add type: "module" in package json
 
 Instead of using commmon js we will be using ES6 modules 
-so we need to add type: "module" in package json
+so we need to add type: "module" in package json after name, version and description
 this will allow to use import syntax
+
+```bash
+"type": "module",
+```
 
 6. in server.js file we will write below code: 
 
@@ -40,7 +44,7 @@ app.get('/', (req,res) => {
 ```
 
 
-7. insall nodemon as dev dependency
+7. install nodemon as dev dependency
 ```bash
 npm i -D nodemon
 ```
@@ -120,7 +124,7 @@ Lets first complete flow for one of the routes
 userController.js
 -----------------
 ```javascript
-// @desc- Auth User set token <br/>
+// @desc- Auth User set token
 // route - POST api/user/auth
 // access - Public 
 const authUser = (req,res) => {
@@ -130,6 +134,7 @@ const authUser = (req,res) => {
 
 userRoute.js
 ------------
+```javascript
 import express from 'express';
 import { authUser } from '../controllers/userController.js';
 
@@ -137,49 +142,78 @@ const router = express.Router();
 router.post('/auth', authUser)
 
 export default router;
-
+```
 
 server.js
 ---------
-import userRoutes from './routes/userRoutes.js'
+```javascript
+import userRoutes from './routes/userRoutes.js' // new
+const app= express();
 
-// after line const app= express(); below is needed
-app.use('/api/users', userRoutes)
+app.use('/api/users', userRoutes) // new
+
+app.get('/', (req,res) => {
+    res.send('Server is ready !!!!')
+})
+```
 
 14. Open Postman and test routes
-Create Workspace- MERN Auth
-Create collection - User
-Inside User - create a new route 
+
+Create Workspace- MERN Auth  
+
+Create collection - User  
+
 in environment - put this http://localhost:8000/api as baseUrl
+
+Inside User - create a new route : {{baseUrl}}/users/auth 
+
 now hit a POST request 
-{{baseUrl}}/users/auth 
+
 it will show response 
 {
     "message": "Auth user"
 }
 
-15. use of async-handler
-Going further most of request will be async so will install async handler 
-- npm i express-async-handler
+16. use of express-async-handler
+
+
+Going further most of request will be async so will install express-async-handler 
+```bash
+npm i express-async-handler
+```
 
 and then make userController.js- userAuth function as async. See below :
---------------------------------------------------------
+```javascript
+
 import asyncHandler from 'express-async-handler';
 
+// @desc- Auth User set token
+// route - POST api/user/auth
+// access - Public 
+/* old code
+const authUser = (req,res) => {
+    res.status(200).json({message: 'Auth User'})
+}
+*/
 const authUser= asyncHandler(async (req, res) => {
     res.status(200).json({message: 'Auth user'})
 });
---------------------------------------------------------
+```
 
-this async handler will also allow to use custom error handler
+
+Note: this async handler will also allow to use custom error handler
+
 
 16. create error-handler
 - create a new folder "middleware" parallel to controllers
+
 - inside this create a new file errorMiddleware.js
 
-we will create 2 function here
-----------------------------------------------------------------------------
+we will create 2 function here - notFound and errorHandler
 
+errorMiddleware.js
+-------------------
+```javascript
 const notFound= (req,res,next) => {
     const error = new Error(`Not Found - ${req.originalUrl}`)
     res.status(404);
@@ -197,33 +231,71 @@ const errorHandler = (error, req,res,next) => {
         message,
         stack: process.env === 'production' ? null : error.stack
     });
-
 }
 
 export {notFound, errorHandler};
----------------------------------------------------------------------------
+```
+
 
 In server.js add this 2 function for error handling
-------------------------------------------------------------------------
-import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+-----------------------------------------------------
 
-after app.get('/', (req,res) => { ..... 
-add below code :
+server.js
+---------
+```javascript
+import express from 'express';
+import dotenv from 'dotenv';
+import userRoutes from './routes/userRoutes.js'
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'; // new
+dotenv.config();
+const PORT= process.env.PORT || 6000;
+
+const app= express();
+
+app.use('/api/users', userRoutes) 
+
+app.get('/', (req,res) => {
+    res.send('Server is ready !!!!')
+})
+
+app.use(notFound) // new
+app.use(errorHandler) // new
+
+app.listen(PORT, () => {
+    console.log(`Server started on port :  ${PORT}`);
+    console.log("env is : ", process.env.NODE_ENV)
+});
+
+```
 
 
-app.use(notFound)
-app.use(errorHandler)
-------------------------------------------------------------------------
-
-17. Till now basic setup for one of routes /users/auth is done 
-and we cna check for error case also 
+17. Till now the basic setup for one of routes -  /users/auth
+is done and we can check for error case also 
 
 Now we will add some more routes as in point 13
 
-In userController.js - we have function authUser
+Note: In userController.js - we have function authUser
 now we will add code for below functions
-registerUser, logoutUser, getUserProfile, updateUserProfile
-------------------------------------------------------------------------
+- registerUser
+- logoutUser
+- getUserProfile
+- updateUserProfile
+
+and export these functions to be used in userRoute.js
+
+
+userController
+--------------
+```javascript
+import asyncHandler from 'express-async-handler';
+
+// @desc  Auth user/set token
+// route  POST /api/users/auth
+// @access Public
+const authUser= asyncHandler(async (req, res) => {
+    res.status(200).json({message: 'Auth user'})
+});
+
 
 // @desc  register a new user
 // route  POST /api/users
@@ -254,16 +326,33 @@ const updateUserProfile= asyncHandler(async (req, res) => {
     res.status(200).json({message: 'Update User Profile'})
 });
 
-
 export {authUser, registerUser, logoutUser, getUserProfile, updateUserProfile};
-------------------------------------------------------------------------------------
+```
 
-In userRoute.js
-we will import these function add routing code:
-----------------------------------------------------------------------
+
+
+
+In userRoute.js - we will import these function add routing code:
+
+userRoute.js
+------------
+```javascript
+
+import express from 'express';
+import { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile  } from '../controllers/userController.js'; // new
+
+const router = express.Router();
+
+router.post('/', registerUser) //new
+
 router.post('/auth', authUser)
-router.post('/logout', logoutUser)
-router.route('/profile').get(getUserProfile).put(updateUserProfile)
-----------------------------------------------------------------------
 
-Baiscs is done 
+router.post('/logout', logoutUser) // new
+router.route('/profile').get(getUserProfile).put(updateUserProfile) // new
+
+export default router;
+
+```
+
+
+The basic setup is done 
