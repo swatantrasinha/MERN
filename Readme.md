@@ -342,7 +342,6 @@ import express from 'express';
 import { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile  } from '../controllers/userController.js'; // new
 
 const router = express.Router();
-
 router.post('/', registerUser) //new
 router.post('/auth', authUser)
 router.post('/logout', logoutUser) // new
