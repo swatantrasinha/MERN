@@ -355,4 +355,7 @@ export default router;
 ```
 
 
-The basic setup is done 
+The basic setup is done for all routes mentioned in point 14
+
+
+
