@@ -20,8 +20,12 @@ mkdir backend
 5. Add type: "module" in package json
 
 Instead of using commmon js we will be using ES6 modules 
-so we need to add type: "module" in package json
+so we need to add type: "module" in package json after name, version and description
 this will allow to use import syntax
+
+```bash
+"type": "module",
+```
 
 6. in server.js file we will write below code: 
 
@@ -120,7 +124,7 @@ Lets first complete flow for one of the routes
 userController.js
 -----------------
 ```javascript
-// @desc- Auth User set token <br/>
+// @desc- Auth User set token
 // route - POST api/user/auth
 // access - Public 
 const authUser = (req,res) => {
