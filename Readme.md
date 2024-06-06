@@ -343,7 +343,9 @@ import { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile  
 
 const router = express.Router();
 ```
+```
 router.post('/', registerUser) //new
+```
 ```
 router.post('/auth', authUser)
 ```
