@@ -44,7 +44,7 @@ app.get('/', (req,res) => {
 ```
 
 
-7. insall nodemon as dev dependency
+7. install nodemon as dev dependency
 ```bash
 npm i -D nodemon
 ```
@@ -134,6 +134,7 @@ const authUser = (req,res) => {
 
 userRoute.js
 ------------
+```javascript
 import express from 'express';
 import { authUser } from '../controllers/userController.js';
 
@@ -141,16 +142,23 @@ const router = express.Router();
 router.post('/auth', authUser)
 
 export default router;
-
+```
 
 server.js
 ---------
-import userRoutes from './routes/userRoutes.js'
+```javascript
+import userRoutes from './routes/userRoutes.js' // new
+const app= express();
 
-// after line const app= express(); below is needed
-app.use('/api/users', userRoutes)
+app.use('/api/users', userRoutes) // new
+
+app.get('/', (req,res) => {
+    res.send('Server is ready !!!!')
+})
+```
 
 14. Open Postman and test routes
+
 Create Workspace- MERN Auth
 Create collection - User
 Inside User - create a new route 
@@ -162,7 +170,7 @@ it will show response
     "message": "Auth user"
 }
 
-15. use of async-handler
+16. use of async-handler
 Going further most of request will be async so will install async handler 
 - npm i express-async-handler
 
