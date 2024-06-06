@@ -339,15 +339,17 @@ userRoute.js
 ```javascript
 
 import express from 'express';
-import { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile } from '../controllers/userController.js'; // new
+import { authUser, <mark> registerUser, logoutUser, getUserProfile, updateUserProfile </mark> } from '../controllers/userController.js'; // new
 
 const router = express.Router();
-
+<mark>
 router.post('/', registerUser) //new
+</mark>
 router.post('/auth', authUser)
+<mark>
 router.post('/logout', logoutUser) // new
 router.route('/profile').get(getUserProfile).put(updateUserProfile) // new
-
+</mark>
 export default router;
 
 ```
