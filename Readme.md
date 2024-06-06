@@ -269,15 +269,33 @@ app.listen(PORT, () => {
 ```
 
 
-17. Till now basic setup for one of routes /users/auth is done 
-and we cna check for error case also 
+17. Till now the basic setup for one of routes -  /users/auth
+is done and we can check for error case also 
 
 Now we will add some more routes as in point 13
 
-In userController.js - we have function authUser
+Note: In userController.js - we have function authUser
 now we will add code for below functions
-registerUser, logoutUser, getUserProfile, updateUserProfile
-------------------------------------------------------------------------
+- registerUser
+- logoutUser
+- getUserProfile
+- updateUserProfile
+
+and export these functions to be used in userRoute.js
+
+
+userController
+--------------
+```javascript
+import asyncHandler from 'express-async-handler';
+
+// @desc  Auth user/set token
+// route  POST /api/users/auth
+// @access Public
+const authUser= asyncHandler(async (req, res) => {
+    res.status(200).json({message: 'Auth user'})
+});
+
 
 // @desc  register a new user
 // route  POST /api/users
@@ -308,16 +326,21 @@ const updateUserProfile= asyncHandler(async (req, res) => {
     res.status(200).json({message: 'Update User Profile'})
 });
 
-
 export {authUser, registerUser, logoutUser, getUserProfile, updateUserProfile};
-------------------------------------------------------------------------------------
+```
 
-In userRoute.js
-we will import these function add routing code:
-----------------------------------------------------------------------
+
+
+
+In userRoute.js - we will import these function add routing code:
+
+userRoute.js
+------------
+```javascript
 router.post('/auth', authUser)
 router.post('/logout', logoutUser)
 router.route('/profile').get(getUserProfile).put(updateUserProfile)
-----------------------------------------------------------------------
+```
 
-Baiscs is done 
+
+The basic setup is done 
