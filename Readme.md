@@ -174,28 +174,46 @@ it will show response
     "message": "Auth user"
 }
 
-16. use of async-handler
-Going further most of request will be async so will install async handler 
-- npm i express-async-handler
+16. use of express-async-handler
+
+
+Going further most of request will be async so will install express-async-handler 
+```bash
+npm i express-async-handler
+```
 
 and then make userController.js- userAuth function as async. See below :
---------------------------------------------------------
+```javascript
+
 import asyncHandler from 'express-async-handler';
 
+// @desc- Auth User set token
+// route - POST api/user/auth
+// access - Public 
+/* old code
+const authUser = (req,res) => {
+    res.status(200).json({message: 'Auth User'})
+}
+*/
 const authUser= asyncHandler(async (req, res) => {
     res.status(200).json({message: 'Auth user'})
 });
---------------------------------------------------------
+```
 
-this async handler will also allow to use custom error handler
+
+Note: this async handler will also allow to use custom error handler
+
 
 16. create error-handler
 - create a new folder "middleware" parallel to controllers
+
 - inside this create a new file errorMiddleware.js
 
-we will create 2 function here
-----------------------------------------------------------------------------
+we will create 2 function here - notFound and errorHandler
 
+errorMiddleware.js
+-------------------
+```javascript
 const notFound= (req,res,next) => {
     const error = new Error(`Not Found - ${req.originalUrl}`)
     res.status(404);
@@ -213,14 +231,18 @@ const errorHandler = (error, req,res,next) => {
         message,
         stack: process.env === 'production' ? null : error.stack
     });
-
 }
 
 export {notFound, errorHandler};
----------------------------------------------------------------------------
+```
+
 
 In server.js add this 2 function for error handling
-------------------------------------------------------------------------
+-----------------------------------------------------
+
+server.js
+---------
+```javascript
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 after app.get('/', (req,res) => { ..... 
@@ -229,7 +251,8 @@ add below code :
 
 app.use(notFound)
 app.use(errorHandler)
-------------------------------------------------------------------------
+```
+
 
 17. Till now basic setup for one of routes /users/auth is done 
 and we cna check for error case also 
