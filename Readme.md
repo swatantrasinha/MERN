@@ -98,8 +98,10 @@ Mongo DB connected : ac-s39bhze-shard-00-01.zu17dyl.mongodb.net
 So now Database connection is done
 </details>
 
+
+
 <details>
-  <summary>Step3 : Create Models  </summary>
+  <summary> Step3 : Create Models  </summary>
 
 Create folder "models" in "backend" folder
 inside that create file "userModel.js"
@@ -125,7 +127,9 @@ const User= mongoose.model('User', userSchema);
 export default User;
 ```
 For this User model, we need user data from UI or postmon 
-so in server.js after const app= express(); ==> we will add below 2 line to get user data in json format
+so in server.js after 
+> const app= express();  
+we will add below 2 line to get user data in json format
 
 ---------------
 ```javascript
@@ -152,12 +156,15 @@ const registerUser= asyncHandler(async (req, res) => {
 });
 ```
 
-to send data in register request like username, password
-In postman  go to body -> x-www-form-urlencoded
+To send data in register request like username, email and password  
+
+In postman  go to body -> **x-www-form-urlencoded**
 there is option to enter data in form of key value pair
-key- name
-value - swatantra sinha
-Now if we hit URL we can see in console below : 
+- key- name  
+- value - swatantra sinha
+
+Now if we hit URL we can see in console below :  
+
 request body is :  { name: 'swatantra sinha' }
 
 So now we can destructure name and other details and write our logic for registration
