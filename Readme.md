@@ -151,5 +151,10 @@ we will get response :
 ```
 
 
+<details>
+  <summary> Logout - Delete JWT token from cookie </summary>
+ 
+</details>
+
 
 </details>
