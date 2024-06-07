@@ -8,31 +8,35 @@ Create Project - demo-connect-mongodb-with-node <br/>
 complete process of setup in mongodb website <br/>
 and also create databse manually <br/>
 
-Add Data Option
-----------------
-- Create Database
-database name: mernauth
+### Add Data Option
+
+- Create Database <br/>
+database name: mernauth <br/>
 collection name: users
 
-Note: We will need to URIs
-a. for connecting to compass
-b. for connecting to DB via code
+- Note: We will need to URIs  <br/>
+a. for connecting to compass   
+b. for connecting to DB via code  
 
-For Code : See Connect - Driver
-we will get below:
+**For Code :**  
+See Connect - Driver  
+we will get below:  
 mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/?retryWrites=true&w=majority&appName=demo-connection
-
-now in above string after mongodb.net/ add the database name mernauth and replace password (while coding and remove)
-
+<br />
+now in above string after  <br />
+mongodb.net/ add the database name **mernauth** and replace password (while coding and remove)
+<br />
 mongodb+srv://swatantrasinha15aug:sinha@demo-connection.zu17dyl.mongodb.net/mernauth?retryWrites=true&w=majority&appName=demo-connection
+<br/>
+put this in env file with  <br/>
 
-put this in env file with 
 MONGO_URI= mongodb+srv://swatantrasinha15aug:sinha@demo-connection.zu17dyl.mongodb.net/mernauth?retryWrites=true&w=majority&appName=demo-connection
 
-For Compass: See Connect - Compass
-we will get below :
-mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/
-add this in compass and then we can access DB via compass
+**For Compass:**
+See Connect - Compass
+we will get below : <br/>
+mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/ <br/>
+add this in compass and then we can access DB via compass <br/>
 
 
 env file
