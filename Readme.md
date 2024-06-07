@@ -21,7 +21,7 @@ b. for connecting to DB via code
 <ins>For Code : </ins> <br />
 See Connect - Driver  
 we will get below:  
-> mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/?retryWrites=true&w=majority&appName=demo-connection
+> mongodb+srv://swatantrasinha15aug:password@demo-connection.zu17dyl.mongodb.net/?retryWrites=true&w=majority&appName=demo-connection
 
 now in above string after  
 
@@ -38,7 +38,8 @@ MONGO_URI= mongodb+srv://swatantrasinha15aug:sinha@demo-connection.zu17dyl.mongo
 <ins>For Compass </ins>
 See Connect - Compass
 we will get below : <br/>
-> mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/ <br/>
+> mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/  
+
 add this in compass and then we can access DB via compass <br/>
 
 
@@ -52,9 +53,10 @@ MONGO_URI= mongodb+srv://swatantrasinha:sinha1508@mernauth.eatwkyd.mongodb.net/m
 
 </details>
 
-2. Code to connect to DB
+<details>
+  <summary>Step 2. Code to connect to DB </summary>
 
-- new folder "config" inside "backend" folder
+- create new folder "config" inside "backend" folder
 - create new file "db.js" inside the config folder
 
 db.js
@@ -88,11 +90,13 @@ Now start server
 ```bash
 npm run server
 ```
-We can see below in console:
-Server started on port :  8000
+We can see below in console: <br />
+Server started on port :  8000  
 Mongo DB connected : ac-s39bhze-shard-00-01.zu17dyl.mongodb.net
 
+
 So now Database connection is done
+</details>
 
 3. Create Models
 Create folder "models" in "backend" folder
