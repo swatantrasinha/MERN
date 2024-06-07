@@ -1,4 +1,7 @@
 # Backend setup with mongodb
+The initial setup is already done in branch **backend-initial-setup** <br />
+Here in this branch we will setup for MongoDB
+<hr/>
 
 <details>
   <summary>Step1 : Get connection string for connecting DB with code and compass </summary>
