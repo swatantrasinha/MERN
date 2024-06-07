@@ -84,3 +84,30 @@ HttpOnly: true
 Secure: false
 ```
 </details>
+
+
+<details>
+  <summary> Authentication - Validate the token stored in cookie </summary>
+
+ In userController.js file -->  authUser function  <br />
+ we have the below code :
+ 
+ ```javascript
+const authUser= asyncHandler(async (req, res) => {
+    res.status(200).json({message: 'Auth user'})
+});
+```
+We will modify this to authenticate the token 
+
+We need to compare encoded password stored in DB with password enntered by user <br/>
+for this we will use compare method from bcrypt and create below function matchPassword 
+after 
+>  userSchema.pre .... // encoding logic
+
+```javascript
+userSchema.methods.matchPassword= async function(enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password)
+}
+```
+
+</details>
