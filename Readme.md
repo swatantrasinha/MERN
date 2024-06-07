@@ -158,7 +158,15 @@ we will get response :
 <summary> Logout - Delete JWT token from cookie </summary>
  <br />
  
- Create function logoutUser in userController.js
+ We have function logoutUser in userController.js with below code:  
+
+ ```javascript
+const logoutUser= asyncHandler(async (req, res) => {
+    res.status(200).json({message: 'Logout User'})
+});
+```
+We will modify it to below : 
+
 
 userController.js
 -----------------
