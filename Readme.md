@@ -89,16 +89,8 @@ Secure: false
 <details>
   <summary> Authentication - Validate the token stored in cookie </summary>
 
- In userController.js file -->  authUser function  <br />
- we have the below code :
- 
- ```javascript
-const authUser= asyncHandler(async (req, res) => {
-    res.status(200).json({message: 'Auth user'})
-});
-```
-We will modify this to authenticate the token 
-
+userModel.js
+--------------
 We need to compare encoded password stored in DB with password enntered by user <br/>
 for this we will use compare method from bcrypt and create below function matchPassword 
 after 
@@ -109,5 +101,39 @@ userSchema.methods.matchPassword= async function(enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
 ```
+
+Now we will utilize this matchPassword in userController  <br/>
+
+In userController.js file -->  authUser function  <br />
+ we have the below code :
+ 
+ ```javascript
+const authUser= asyncHandler(async (req, res) => {
+    res.status(200).json({message: 'Auth user'})
+});
+```
+We will modify this to  as below :
+```javascript
+const authUser= asyncHandler(async (req, res) => {
+    const { email, password}= req.body;
+    const user= await User.findOne({email}); 
+    if(user && (await user.matchPassword(password))) {
+        generateToken(res, user._id);
+
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email
+        })
+    } else {
+        res.status(400);
+        throw new Error('Invalid  email or password ')
+    }
+
+    // res.status(200).json({message: 'Auth user'})
+});
+```
+
+
 
 </details>
