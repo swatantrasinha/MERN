@@ -98,7 +98,9 @@ Mongo DB connected : ac-s39bhze-shard-00-01.zu17dyl.mongodb.net
 So now Database connection is done
 </details>
 
-3. Create Models
+<details>
+  <summary>Step3 : Create Models  </summary>
+
 Create folder "models" in "backend" folder
 inside that create file "userModel.js"
 
@@ -229,6 +231,8 @@ const User= mongoose.model('User', userSchema);
 export default User;
 ```
 
-we can test the register route in POSTMAN
+</details>
+
+We can test the register route in POSTMAN
 and can verify data stored in DB 
 
