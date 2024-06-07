@@ -24,9 +24,9 @@ we will get below:
 > mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/?retryWrites=true&w=majority&appName=demo-connection
 <br />
 now in above string after  <br />
-mongodb.net/ add the database name mernauth and replace password (while coding and remove)
+mongodb.net/ add the database name <ins> mernauth </ins>  and replace password (while coding and remove)
 <br />
-mongodb+srv://swatantrasinha15aug:sinha@demo-connection.zu17dyl.mongodb.net/mernauth?retryWrites=true&w=majority&appName=demo-connection
+> mongodb+srv://swatantrasinha15aug:sinha@demo-connection.zu17dyl.mongodb.net/mernauth?retryWrites=true&w=majority&appName=demo-connection
 <br/>
 put this in env file with  <br/>
 
