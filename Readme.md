@@ -3,8 +3,9 @@
 
 MongoDB setup is already done in branch **backend-setup-with-mongodb**
 here we will do setup for JWT authentication
-
-## Generate token and store in cookie  
+ 
+<details>
+  <summary> Generate token and store in cookie </summary>
 1. JWT_SECRET in .env file  
 
 Add a varibale wuth name JWT_SECRET in .env file and give a value to it
@@ -82,4 +83,4 @@ Expires: date which is 30 days after date from now
 HttpOnly: true
 Secure: false
 ```
-
+</details>
