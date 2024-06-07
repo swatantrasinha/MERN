@@ -133,6 +133,22 @@ const authUser= asyncHandler(async (req, res) => {
     // res.status(200).json({message: 'Auth user'})
 });
 ```
+We can test our POST call route for User Auth /users/auth in POSTMAN
+with below data in  body -> x-www-form-urlencoded  <br />
+```javascript
+name: swatantra sinha
+password: sinha
+email: swat1508@gmail.com
+```
+
+we will get response :
+```javascript
+{
+    "_id": "6662fad416e7fbd5912a7aa3",
+    "name": "swatantra sinha",
+    "email": "swat1508@gmail.com"
+}
+```
 
 
 
