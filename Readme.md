@@ -1,4 +1,8 @@
 # Backend SetUp
+Here in this branch **backend-initial-setup** <br/>
+we will do initial setup for installing packages and routing code 
+<hr />
+
 Follow the below Steps for setting backend :
 
 1. Start project : generate package.json file
