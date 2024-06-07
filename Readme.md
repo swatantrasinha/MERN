@@ -150,11 +150,26 @@ we will get response :
 }
 ```
 
-
-<details>
-  <summary> Logout - Delete JWT token from cookie </summary>
- 
 </details>
 
 
+
+<details>
+<summary> Logout - Delete JWT token from cookie </summary>
+ <br />
+ 
+ Create function logoutUser in userController.js
+
+userController.js
+-----------------
+
+ ```javascript
+const logoutUser= asyncHandler(async (req, res) => {
+    res.cookie('jwt', '', {
+        httpOnly: true,
+        expires: new Date(0),
+    })
+    res.status(200).json({message: 'User Logged Out'})
+});
+```
 </details>
