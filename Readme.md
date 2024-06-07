@@ -101,7 +101,7 @@ So now Database connection is done
 
 
 <details>
-  <summary> Step3 : Create Models  </summary>
+  <summary> Step3 : Create Models and add code for regitration logic in userController  </summary>
 
 Create folder "models" in "backend" folder
 inside that create file "userModel.js"
