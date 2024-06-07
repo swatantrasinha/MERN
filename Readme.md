@@ -1,7 +1,7 @@
 # Backend setup with mongodb
 
-
-## 1. Step1 : get connection string for connecting DB with code and compass
+<details>
+  <summary>Step1 : Get connection string for connecting DB with code and compass </summary>
 
 ### Create Connection with MongoDB
 Create Project - demo-connect-mongodb-with-node <br/> 
@@ -42,6 +42,8 @@ NODE_ENV= development
 PORT= 8000
 MONGO_URI= mongodb+srv://swatantrasinha:sinha1508@mernauth.eatwkyd.mongodb.net/mernauth?retryWrites=true&w=majority
 ```
+
+</details>
 
 2. Code to connect to DB
 
