@@ -18,24 +18,26 @@ collection name: users
 a. for connecting to compass   
 b. for connecting to DB via code  
 
-**For Code :**  
+<ins>For Code : </ins>
 See Connect - Driver  
 we will get below:  
-mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/?retryWrites=true&w=majority&appName=demo-connection
+> mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/?retryWrites=true&w=majority&appName=demo-connection
 <br />
 now in above string after  <br />
-mongodb.net/ add the database name mernauth and replace password (while coding and remove)
+> mongodb.net/ add the database name mernauth and replace password (while coding and remove)
 <br />
-mongodb+srv://swatantrasinha15aug:sinha@demo-connection.zu17dyl.mongodb.net/mernauth?retryWrites=true&w=majority&appName=demo-connection
+> mongodb+srv://swatantrasinha15aug:sinha@demo-connection.zu17dyl.mongodb.net/mernauth?retryWrites=true&w=majority&appName=demo-connection
 <br/>
 put this in env file with  <br/>
 
+```javascript
 MONGO_URI= mongodb+srv://swatantrasinha15aug:sinha@demo-connection.zu17dyl.mongodb.net/mernauth?retryWrites=true&w=majority&appName=demo-connection
+```
 
-**For Compass:**
+<ins>For Compass </ins>
 See Connect - Compass
 we will get below : <br/>
-mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/ <br/>
+> mongodb+srv://swatantrasinha15aug:<password>@demo-connection.zu17dyl.mongodb.net/ <br/>
 add this in compass and then we can access DB via compass <br/>
 
 
