@@ -350,6 +350,13 @@ const updateUserProfile= asyncHandler(async (req, res) => {
     }
 });
 ```
+
+In POSTMAN,
+for updateUserProfile: /users/profile
+in body -> x-www-form-urlencoded
+name: swat-sinha
+click on send
+it will update in DB
 </details>
 
 
