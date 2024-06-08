@@ -187,7 +187,7 @@ const logoutUser= asyncHandler(async (req, res) => {
 Since register , login and logout is done so now we will proceed for protecting routes
 
 
-1. TO use cookies stores we need cookie-parser which we have already installed. <br />
+1. To use cookies stores we need cookie-parser which we have already installed. <br />
 So in server.js lets make changes to use cookie-parser before below line :<br />
 
 
@@ -252,6 +252,9 @@ At this point we have not added this middleware
 so if we call users/profile we will be able to access it
 
 Lets add protect middleware in userRoute
+
+3. Add protect middleware in userRoute and modify getUserProfile in userController
+
 
 userRoute.js
 ------------
