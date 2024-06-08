@@ -184,5 +184,31 @@ const logoutUser= asyncHandler(async (req, res) => {
 
 <details>
 <summary> Protecting Routes: Use Cookies  </summary>
+Since register , login and logout is done so now we will proceed for protecting routes
+
+
+1. TO use cookies stores we need cookie-parser which we have already installed. <br />
+So in server.js lets make changes to use cookie-parser before below line :<br />
+
+
+> app.use('/api/users', userRoutes)
+
+```javascript
+import cookieParser from 'cookie-parser';
+
+app.use(cookieParser()); // new code 
+app.use('/api/users', userRoutes)
+```
+2. In middleware folder create new file- authMiddleware.js and create function protect <br/>
+where we will use jwt.verify method to decode token <br />
+
+```javascript
+
+
+```
+
+
+
+
  
 </details>
