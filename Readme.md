@@ -328,6 +328,8 @@ Hence we will take userId from req.user and fetch data froom database <br />
 
 ```javascript
 const updateUserProfile= asyncHandler(async (req, res) => {
+  // res.status(200).json({message: 'Update User Profile'})
+
     const user= await User.findById(req.user._id);
     if(user) {
         user.name= req.body.name || user.name; // if in req body- req.body.name is not there then updation is not needed
@@ -346,7 +348,6 @@ const updateUserProfile= asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error('User Not Found')
     }
-    // res.status(200).json({message: 'Update User Profile'})
 });
 ```
 </details>
