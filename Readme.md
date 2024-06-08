@@ -279,5 +279,42 @@ it will show error
 
 if we hit login api(/users/auth) once (token gets added in cookie)
 and then hit getProfile api it will be successful
- 
+
+Now if we see getUserProfile function in userController
+```javascript
+const getUserProfile= asyncHandler(async (req, res) => {
+    res.status(200).json({msg: 'Get User Profile Called'})
+});
+```
+It simply returns the response of 200 with msg <br />
+However in protect middle req is added with req.user of autthenticated user 
+so it has user's id,name and email which we can extract from it
+Note: password is not there in req.user as we have removed in authMiddleware <br />
+
+> req.user= await User.findById(decoded.userId).select('-password');
+
+We have 2 option to display user profile 
+- if password is not needed to display- can display data(id, name, email) from req.user
+- if passwors needs to be displayed- take id from req.user and fetch data from database to display it
+
+
+```javascript
+const getUserProfile= asyncHandler(async (req, res) => {
+    // To display data from req object
+    const userData= {
+        _id: req.user._id,
+        name: req.user.name,
+        email: req.user.email
+    }
+    res.status(200).json({userData: userData})
+    
+    // To take userId from req.user and fetch data data from database and display it
+    /*
+    const user= await User.findById(req.user._id);
+    res.status(200).json({user})
+    */
+});
+``` 
 </details>
+
+
