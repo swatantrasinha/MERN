@@ -248,7 +248,30 @@ export {protect} ;
 > In above we are not exporting as default as we may need to add some more authentication middleware like admin because some routes may not want admin access
 
 <br />
+At this point we have not added this middleware
+so if we call users/profile we will be able to access it
 
+Lets add protect middleware in userRoute
+
+userRoute.js
+------------
+> import {protect} from '../middleware/authMiddleware.js'
+
+and the existing code below 
+```javascript
+router
+    .route('/profile')
+    .get( getUserProfile)
+    .put(  updateUserProfile)
+```
+will be removed and new code with protect middleware will be added
+
+```javascript
+router
+    .route('/profile')
+    .get(protect, getUserProfile)
+    .put( protect, updateUserProfile)
+```
 
  
 </details>
