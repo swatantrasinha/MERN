@@ -321,14 +321,17 @@ const getUserProfile= asyncHandler(async (req, res) => {
 
 4. Update Profile Route
 
-Similar to getUserProfile we will make changes to updateProfileRoute as well
+Similar to getUserProfile we will make changes to updateProfileRoute as well <br />
+Here the user may have password updation as well <br />
+so unlike getUserProfile password is manadatory to be fetched <br />
+Hence we will take userId from req.user and fetch data froom database <br />
 
 ```javascript
 const updateUserProfile= asyncHandler(async (req, res) => {
     const user= await User.findById(req.user._id);
     if(user) {
-        user.name= req.body.name || user.name;
-        user.email= req.body.email || user.email;
+        user.name= req.body.name || user.name; // if in req body- req.body.name is not there then updation is not needed
+        user.email= req.body.email || user.email; // if in req body- req.body.email is not there then updation is not needed
 
         if(req.body.password) {
             user.password= req.body.password;
