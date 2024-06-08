@@ -273,5 +273,11 @@ router
     .put( protect, updateUserProfile)
 ```
 
+Now first hit logout api so that token from cookie gets deleted and then hit getProfile api
+it will show error
+> "message": "Not authorized, no token"
+
+if we hit login api(/users/auth) once (token gets added in cookie)
+and then hit getProfile api it will be successful
  
 </details>
